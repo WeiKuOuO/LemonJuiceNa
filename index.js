@@ -21,7 +21,7 @@ const bot = new Discord.Client();
       }
     }
 
-    if(command === "join"){
+    if(message.content === "join"){
        message.delete().catch(O_o=>{});
        const joinmessage = new Discord.RichEmbed()
       .setAuthor(bot.user.username)
