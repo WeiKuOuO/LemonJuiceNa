@@ -21,16 +21,16 @@ const bot = new Discord.Client();
       }
     }
 
-    if(message.content === "join"){
-       message.delete().catch(O_o=>{});
-       const joinmessage = new Discord.RichEmbed()
-      .setAuthor(bot.user.username)
-      .setTitle("加入須知")
-      .setColor(0x00FF04)
-      .addField("如何加入?","\`\`\`fix\n歡迎來到地城之內DC群，請打'dungeon'來證明你不是機器人\`\`\`", true)
-    bot.channels.filter(c => c.name=="歡迎來到地城之內").forEach(c => c.bulkDelete("50"))
-    bot.channels.filter(c => c.name === "歡迎來到地城之內").forEach(c => c.send(joinmessage));
-    }
+    // if(message.content === "wtfisthewrongjoin"){
+    //    message.delete().catch(O_o=>{});
+    //    const joinmessage = new Discord.RichEmbed()
+    //   .setAuthor(bot.user.username)
+    //   .setTitle("加入須知")
+    //   .setColor(0x00FF04)
+    //   .addField("如何加入?","\`\`\`fix\n歡迎來到地城之內DC群，請打'dungeon'來證明你不是機器人\`\`\`", true)
+    // bot.channels.filter(c => c.name=="歡迎來到地城之內").forEach(c => c.bulkDelete("50"))
+    // bot.channels.filter(c => c.name === "歡迎來到地城之內").forEach(c => c.send(joinmessage));
+    // }
 
   })
   
