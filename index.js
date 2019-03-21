@@ -12,7 +12,7 @@ const bot = new Discord.Client();
             message.channel.send("你已經輸入過了了").then(message => message.delete(5000))
             message.delete()
         } else {
-            message.member.addRole('551768116065992714').then(message.channel.send("已成功驗證").then(message => message.delete(5000)))
+            message.member.addRole("551768116065992714").then(message.channel.send("已成功驗證").then(message => message.delete(5000)))
             message.delete()
         }
       } else {
