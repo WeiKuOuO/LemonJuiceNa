@@ -9,18 +9,38 @@ const bot = new Discord.Client();
     if (message.channel.id == "557950194948505601") {
       if (message.content === "dungeon") {
         if (message.member.roles.has("551768116065992714")) {
-            message.channel.send("你已經輸入過了了").then(message => message.delete(5000))
+            message.channel.send("你已經輸入過了").then(message => message.delete(5000))
+            const already = new Discord.RichEmbed()
+              .setAuthor(bot.user.name)
+              .setTitle("無法驗證(重複驗證)")
+              .setColor(0xFCFF00)
+              .addField(message.author.name,`\`\`\`${message.author.id}\`\`\``, true)
+              .setTimestamp(new Date())
+            bot.channels.filter(c => c.name === "驗證log頻道").forEach(c => c.send(already));
             message.delete()
         } else {
             message.member.addRole("551768116065992714").then(message.channel.send("已成功驗證").then(message => message.delete(5000)))
+            const success = new Discord.RichEmbed()
+              .setAuthor(bot.user.name)
+              .setTitle("驗證成功")
+              .setColor(0x18FF00)
+              .addField(message.author.name,`\`\`\`${message.author.id}\`\`\``, true)
+              .setTimestamp(new Date())
+            bot.channels.filter(c => c.name === "驗證log頻道").forEach(c => c.send(success));
             message.delete()
         }
       } else {
         message.channel.send("請輸入\"dungeon\"").then(message => message.delete(5000));
+        const other = new Discord.RichEmbed()
+          .setAuthor(bot.user.name)
+          .setTitle("驗證失敗(輸入非dungeon字詞)")
+          .setColor(0xFF0000)
+          .addField(message.author.name,`\`\`\`${message.author.id}\`\`\``, true)
+          .setTimestamp(new Date())
+        bot.channels.filter(c => c.name === "驗證log頻道").forEach(c => c.send(other));
         message.delete()
       }
     }
-
     // if(message.content === "wtfisthewrongjoin"){
     //    message.delete().catch(O_o=>{});
     //    const joinmessage = new Discord.RichEmbed()
