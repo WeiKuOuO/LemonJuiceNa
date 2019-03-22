@@ -22,7 +22,7 @@ const bot = new Discord.Client();
             const success = new Discord.RichEmbed()
               .setTitle("驗證成功")
               .setColor(0x18FF00)
-              .addField(message.author,`\`\`\`${message.author.id}\`\`\``, true)
+              .addField(message.author,`\`\`\`fix\n${message.author.id}\`\`\``, true)
               .setTimestamp(new Date())
             bot.channels.filter(c => c.name === "驗證log頻道").forEach(c => c.send(success));
             message.delete()
