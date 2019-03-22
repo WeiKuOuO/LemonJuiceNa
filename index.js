@@ -13,7 +13,8 @@ const bot = new Discord.Client();
             const already = new Discord.RichEmbed()
               .setTitle("無法驗證(重複驗證)")
               .setColor(0xFCFF00)
-              .addField(message.author,`\`\`\`${message.author.id}\`\`\``, true)
+              .addField(":level_slider: 輸入者ID",`\`\`\`fix\n${message.author.id}\`\`\``, true)
+              .addField(":bust_in_silhouette: 輸入者",`\`\`\`fix\n${message.member.user}\`\`\``, true)
               .setTimestamp(new Date())
             bot.channels.filter(c => c.name === "驗證log頻道").forEach(c => c.send(already));
             message.delete()
@@ -22,7 +23,8 @@ const bot = new Discord.Client();
             const success = new Discord.RichEmbed()
               .setTitle("驗證成功")
               .setColor(0x18FF00)
-              .addField(message.author,`\`\`\`fix\n${message.author.id}\`\`\``, true)
+              .addField(":level_slider: 輸入者ID",`\`\`\`fix\n${message.author.id}\`\`\``, true)
+              .addField(":bust_in_silhouette: 輸入者",`\`\`\`fix\n${message.member.user}\`\`\``, true)
               .setTimestamp(new Date())
             bot.channels.filter(c => c.name === "驗證log頻道").forEach(c => c.send(success));
             message.delete()
@@ -32,7 +34,9 @@ const bot = new Discord.Client();
         const other = new Discord.RichEmbed()
           .setTitle("驗證失敗(輸入非dungeon字詞)")
           .setColor(0xFF0000)
-          .addField(message.author,`\`\`\`${message.author.id}\`\`\``, true)
+          .addField(":level_slider: 輸入者ID",`\`\`\`fix\n${message.author.id}\`\`\``, true)
+          .addField(":bust_in_silhouette: 輸入者",`\`\`\`fix\n${message.member.user}\`\`\``, true)
+          .addField(":keyboard: 輸入文字",`\`\`\`${message.author.lastMessage}\`\`\``, true)
           .setTimestamp(new Date())
         bot.channels.filter(c => c.name === "驗證log頻道").forEach(c => c.send(other));
         message.delete()
