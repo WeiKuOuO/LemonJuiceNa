@@ -35,7 +35,7 @@ const bot = new Discord.Client();
         message.channel.send("請輸入\"dungeon\"").then(message => message.delete(5000));
         const other = new Discord.RichEmbed()
           .setTitle("驗證失敗(輸入非dungeon字詞)")
-          .setDescription("==================**《※ 輸入者資訊 ※》**==================")
+          .setDescription("===================**《※ 輸入者資訊 ※》**===================")
           .setColor(0xFF0000)
           .addField(":level_slider: 輸入者ID",`\`\`\`fix\n${message.author.id}\`\`\``, true)
           .addField(":bust_in_silhouette: 輸入者",`\`\`\`fix\n${message.member.nickname}\`\`\``, true)
