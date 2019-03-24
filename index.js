@@ -47,7 +47,7 @@ const bot = new Discord.Client();
     }
 
     if(message.content === "d/member")
-      message.channel.send(`加入時間:${message.member.joinedAt}`)
+      message.channel.send(`加入時間:${message.member.joinedTimestamp}`)
     // if(message.content === "wtfisthewrongjoin"){
     //    message.delete().catch(O_o=>{});
     //    const joinmessage = new Discord.RichEmbed()
