@@ -44,11 +44,38 @@ const bot = new Discord.Client();
         bot.channels.filter(c => c.name === "驗證log頻道").forEach(c => c.send(other));
         message.delete()
       }
+
+      if(message.content == "d/member"){
+        message.channel.send("此功能暫時維修")
+      }
     }
 
-    if(message.content === "d/member")
-      const memberid = args.join(" ");
-      message.channel.send(`加入時間:${memberid.joinedAt}`)
+
+    bot.on('guildMemberAdd', member => {
+      let logChannel = member.guild.channels.find('name', '🏡加入頻道🏡');
+      
+        let logEmbed = new Discord.RichEmbed()
+        .setAuthor("成員加入 | Logs") 
+        .setDescription(member.user.username + " **加入**了伺服器 (" + member.user.id + ")")
+        .setColor(0x18FF00)
+        .setFooter("成員頭像", member.user.displayAvatarURL)
+        .setTimestamp()
+        logChannel.send(logEmbed);
+      })
+
+
+      bot.on('guildMemberRemove', member => {
+      let logChannel = member.guild.channels.find('name', '🏡加入頻道🏡');
+      
+        let logEmbed = new Discord.RichEmbed()
+        .setAuthor("成員離開 | Logs") 
+        .setDescription(member.user.username + " **離開**了伺服器 (" + member.user.id + ")")
+        .setFooter("成員頭像", member.user.displayAvatarURL)
+        .setColor(0xFF0000)
+        .setTimestamp()
+        logChannel.send(logEmbed);
+      })
+
     // if(message.content === "wtfisthewrongjoin"){
     //    message.delete().catch(O_o=>{});
     //    const joinmessage = new Discord.RichEmbed()
