@@ -15,7 +15,7 @@ const bot = new Discord.Client();
               .setDescription("===================**《※ 輸入者資訊 ※》**===================")
               .setColor(0xFCFF00)
               .addField(":level_slider: 輸入者ID",`\`\`\`fix\n${message.author.id}\`\`\``, true)
-              .addField(":bust_in_silhouette: 輸入者",`\`\`\`fix\n${message.guild.member}\`\`\``, true)
+              .addField(":bust_in_silhouette: 輸入者",`\`\`\`fix\n${message.member.user}\`\`\``, true)
               .setTimestamp(new Date())
             bot.channels.filter(c => c.name === "驗證log頻道").forEach(c => c.send(already));
             message.delete()
@@ -26,7 +26,7 @@ const bot = new Discord.Client();
               .setDescription("===================**《※ 輸入者資訊 ※》**===================")
               .setColor(0x18FF00)
               .addField(":level_slider: 輸入者ID",`\`\`\`fix\n${message.author.id}\`\`\``, true)
-              .addField(":bust_in_silhouette: 輸入者",`\`\`\`fix\n${message.guild.member}\`\`\``, true)
+              .addField(":bust_in_silhouette: 輸入者",`\`\`\`fix\n${message.member.user}\`\`\``, true)
               .setTimestamp(new Date())
             bot.channels.filter(c => c.name === "驗證log頻道").forEach(c => c.send(success));
             message.delete()
@@ -38,7 +38,7 @@ const bot = new Discord.Client();
           .setDescription("===================**《※ 輸入者資訊 ※》**===================")
           .setColor(0xFF0000)
           .addField(":level_slider: 輸入者ID",`\`\`\`fix\n${message.author.id}\`\`\``, true)
-          .addField(":bust_in_silhouette: 輸入者",`\`\`\`fix\n${message.guild.member}\`\`\``, true)
+          .addField(":bust_in_silhouette: 輸入者",`\`\`\`fix\n${message.member.user}\`\`\``, true)
           .addField(":keyboard: 輸入文字",`\`\`\`${message.author.lastMessage}\`\`\``, true)
           .setTimestamp(new Date())
         bot.channels.filter(c => c.name === "驗證log頻道").forEach(c => c.send(other));
