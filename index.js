@@ -15,7 +15,7 @@ const bot = new Discord.Client();
               .setDescription("===================**《※ 輸入者資訊 ※》**===================")
               .setColor(0xFCFF00)
               .addField(":level_slider: 輸入者ID",`\`\`\`fix\n${message.author.id}\`\`\``, true)
-              .addField(":bust_in_silhouette: 輸入者",`\`\`\`fix\n${message.member.user}\`\`\``, true)
+              .addField(":bust_in_silhouette: 輸入者",`\`\`\`fix\n${message.guild.member}\`\`\``, true)
               .setTimestamp(new Date())
             bot.channels.filter(c => c.name === "驗證log頻道").forEach(c => c.send(already));
             message.delete()
@@ -26,7 +26,7 @@ const bot = new Discord.Client();
               .setDescription("===================**《※ 輸入者資訊 ※》**===================")
               .setColor(0x18FF00)
               .addField(":level_slider: 輸入者ID",`\`\`\`fix\n${message.author.id}\`\`\``, true)
-              .addField(":bust_in_silhouette: 輸入者",`\`\`\`fix\n${message.member.user}\`\`\``, true)
+              .addField(":bust_in_silhouette: 輸入者",`\`\`\`fix\n${message.guild.member}\`\`\``, true)
               .setTimestamp(new Date())
             bot.channels.filter(c => c.name === "驗證log頻道").forEach(c => c.send(success));
             message.delete()
@@ -38,7 +38,7 @@ const bot = new Discord.Client();
           .setDescription("===================**《※ 輸入者資訊 ※》**===================")
           .setColor(0xFF0000)
           .addField(":level_slider: 輸入者ID",`\`\`\`fix\n${message.author.id}\`\`\``, true)
-          .addField(":bust_in_silhouette: 輸入者",`\`\`\`fix\n${message.member.user}\`\`\``, true)
+          .addField(":bust_in_silhouette: 輸入者",`\`\`\`fix\n${message.guild.member}\`\`\``, true)
           .addField(":keyboard: 輸入文字",`\`\`\`${message.author.lastMessage}\`\`\``, true)
           .setTimestamp(new Date())
         bot.channels.filter(c => c.name === "驗證log頻道").forEach(c => c.send(other));
@@ -51,30 +51,32 @@ const bot = new Discord.Client();
     }
 
 
-    bot.on('guildMemberAdd', member => {
-      let logChannel = member.guild.channels.find('name', '🏡加入頻道🏡');
+    // bot.on('guildMemberAdd', member => {
+    //   let logChannel = member.guild.channels.find('name', '🏡加入頻道🏡');
       
-        let logEmbed = new Discord.RichEmbed()
-        .setAuthor("成員加入 | Logs") 
-        .setDescription(member.user.username + " **加入**了伺服器 (" + member.user.id + ")")
-        .setColor(0x18FF00)
-        .setFooter("成員頭像", member.user.displayAvatarURL)
-        .setTimestamp()
-        logChannel.send(logEmbed);
-      })
+    //     let logEmbed = new Discord.RichEmbed()
+    //     .setAuthor("成員加入 | Logs") 
+    //     .setDescription(member.user.username + " **加入**了伺服器 (" + member.user.id + ")")
+    //     .setColor(0x18FF00)
+    //     .setFooter("成員頭像", member.user.displayAvatarURL)
+    //     .setTimestamp()
+    //     logChannel.send(logEmbed);
+    //     break;
+    //   })
 
 
-      bot.on('guildMemberRemove', member => {
-      let logChannel = member.guild.channels.find('name', '🏡加入頻道🏡');
+    //   bot.on('guildMemberRemove', member => {
+    //   let logChannel = member.guild.channels.find('name', '🏡加入頻道🏡');
       
-        let logEmbed = new Discord.RichEmbed()
-        .setAuthor("成員離開 | Logs") 
-        .setDescription(member.user.username + " **離開**了伺服器 (" + member.user.id + ")")
-        .setFooter("成員頭像", member.user.displayAvatarURL)
-        .setColor(0xFF0000)
-        .setTimestamp()
-        logChannel.send(logEmbed);
-      })
+    //     let logEmbed = new Discord.RichEmbed()
+    //     .setAuthor("成員離開 | Logs") 
+    //     .setDescription(member.user.username + " **離開**了伺服器 (" + member.user.id + ")")
+    //     .setFooter("成員頭像", member.user.displayAvatarURL)
+    //     .setColor(0xFF0000)
+    //     .setTimestamp()
+    //     logChannel.send(logEmbed);
+    //     break;
+    //   })
 
     // if(message.content === "wtfisthewrongjoin"){
     //    message.delete().catch(O_o=>{});
