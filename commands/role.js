@@ -1,7 +1,7 @@
 const { RichEmbed } = require('discord.js');
 
-exports.run = (bot, message, args) => {
-    
+module.exports.run = (bot, message, args) => {
+
     if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send('抱歉,你沒有**管理員權限**來使用這個指令').then(message => message.delete(5000));
     if (!message.guild.member(bot.user).hasPermission("MANAGE_MESSAGES")) return message.channel.send('我沒有**管理員權限**來刪除訊息').then(message => message.delete(5000));
 
