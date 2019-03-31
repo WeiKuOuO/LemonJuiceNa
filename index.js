@@ -28,7 +28,7 @@ const bot = new Discord.Client();
             const success1 = new Discord.RichEmbed()
               .setTitle("無法驗證(重複驗證)")
               .setDescription("你已經驗證過了! 請勿重複驗證")
-              .setColor(0x18FF00)
+              .setColor(0xFCFF00)
 
             message.member.sendMessage(success1)
 
