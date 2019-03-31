@@ -9,7 +9,7 @@ const bot = new Discord.Client();
   bot.on('message', async message => {
     if (message.author.bot) return
     if (message.channel.id == "557950194948505601") {
-      if (message.content === "dungeon" || "DUNGEON") {
+      if (message.content === "dungeon") {
         if (message.member.roles.has("551768116065992714")) {
 
             message.channel.send("你已經輸入過了").then(message => message.delete(5000))
@@ -81,7 +81,7 @@ const bot = new Discord.Client();
           .addField(":keyboard: 輸入文字",`\`\`\`${message.author.lastMessage}\`\`\``, true)
 
         message.member.sendMessage(other1)
-        
+
         message.delete()
         }
       }
