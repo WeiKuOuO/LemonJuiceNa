@@ -124,14 +124,17 @@ const bot = new Discord.Client();
 
   bot.on("guildCreate", guild => {
     console.log(`加入群組 ${guild.name} [ ${guild.memberCount} ](id: ${guild.id})`);
+    bot.channels.filter(c => c.name === "機器人log").forEach(c => c.send(`加入群組 ${guild.name} [ ${guild.memberCount} ](id: ${guild.id})`));
   });
   
   bot.on("guildDelete", guild => {
     console.log(`退出群組 ${guild.name} [ ${guild.memberCount} ] (id: ${guild.id})`);
+    bot.channels.filter(c => c.name === "機器人log").forEach(c => c.send(`退出群組 ${guild.name} [ ${guild.memberCount} ] (id: ${guild.id})`));
   });
   
   bot.on("ready", () => {
     console.log(`${bot.user.username}成功啟動了!^w^, [ ${bot.guilds.size} | ${bot.channels.size} | ${bot.users.size} ]`);
+    bot.channels.filter(c => c.name === "機器人log").forEach(c => c.send(`${bot.user.username}成功啟動了!^w^, [ ${bot.guilds.size} | ${bot.channels.size} | ${bot.users.size} ]`));
     bot.user.setActivity(`我正在 ${bot.guilds.size} 個群組潛水`,'https://www.twitch.tv/weikuouo');
   });
   
