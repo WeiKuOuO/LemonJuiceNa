@@ -9,9 +9,11 @@ const bot = new Discord.Client();
   bot.on('message', async message => {
     if (message.author.bot) return
     if (message.channel.id == "557950194948505601") {
-      if (message.content === "dungeon") {
+      if (message.content === "dungeon" || "DUNGEON") {
         if (message.member.roles.has("551768116065992714")) {
+
             message.channel.send("你已經輸入過了").then(message => message.delete(5000))
+
             const already = new Discord.RichEmbed()
               .setTitle("無法驗證(重複驗證)")
               .setDescription("===================**《※ 輸入者資訊 ※》**===================")
@@ -19,10 +21,22 @@ const bot = new Discord.Client();
               .addField(":level_slider: 輸入者ID",`\`\`\`fix\n${message.author.id}\`\`\``, true)
               .addField(":bust_in_silhouette: 輸入者",`\`\`\`fix\n${message.author.username}\`\`\``, true)
               .setTimestamp(new Date())
+
             bot.channels.filter(c => c.name === "驗證log頻道").forEach(c => c.send(already));
+
+
+            const success1 = new Discord.RichEmbed()
+              .setTitle("無法驗證(重複驗證)")
+              .setDescription("你已經驗證過了! 請勿重複驗證")
+              .setColor(0x18FF00)
+
+            message.member.sendMessage(success1)
+
             message.delete()
+
         } else {
           message.member.addRole("551768116065992714").then(message.channel.send("已成功驗證").then(message => message.delete(5000)))
+
           const success = new Discord.RichEmbed()
             .setTitle("驗證成功")
             .setDescription("===================**《※ 輸入者資訊 ※》**===================")
@@ -30,11 +44,24 @@ const bot = new Discord.Client();
             .addField(":level_slider: 輸入者ID",`\`\`\`fix\n${message.author.id}\`\`\``, true)
             .addField(":bust_in_silhouette: 輸入者",`\`\`\`fix\n${message.author.username}\`\`\``, true)
             .setTimestamp(new Date())
+
           bot.channels.filter(c => c.name === "驗證log頻道").forEach(c => c.send(success));
+
+
+          const success1 = new Discord.RichEmbed()
+            .setTitle("驗證成功")
+            .setDescription("恭喜你驗證成功了!")
+            .setColor(0x18FF00)
+
+          message.member.sendMessage(success1)
+
+
           message.delete()
         }
       } else {
+
         message.channel.send("請輸入\"dungeon\"").then(message => message.delete(5000));
+
         const other = new Discord.RichEmbed()
           .setTitle("驗證失敗(輸入非dungeon字詞)")
           .setDescription("===================**《※ 輸入者資訊 ※》**===================")
@@ -43,8 +70,18 @@ const bot = new Discord.Client();
           .addField(":bust_in_silhouette: 輸入者",`\`\`\`fix\n${message.author.username}\`\`\``, true)
           .addField(":keyboard: 輸入文字",`\`\`\`${message.author.lastMessage}\`\`\``, true)
           .setTimestamp(new Date())
+
         bot.channels.filter(c => c.name === "驗證log頻道").forEach(c => c.send(other));
-        message.member.sendMessage("test")
+
+
+        const other1 = new Discord.RichEmbed()
+          .setTitle("驗證失敗(輸入非dungeon字詞)")
+          .setDescription("相關資訊")
+          .setColor(0xFF0000)
+          .addField(":keyboard: 輸入文字",`\`\`\`${message.author.lastMessage}\`\`\``, true)
+
+        message.member.sendMessage(other1)
+        
         message.delete()
         }
       }
@@ -87,20 +124,14 @@ const bot = new Discord.Client();
 
   bot.on("guildCreate", guild => {
     console.log(`加入群組 ${guild.name} [ ${guild.memberCount} ](id: ${guild.id})`);
-    bot.channels.filter(c => c.name === "機器人log").forEach(c => c.send(`加入群組 ${guild.name} [ ${guild.memberCount} ](id: ${guild.id})`));
   });
   
   bot.on("guildDelete", guild => {
     console.log(`退出群組 ${guild.name} [ ${guild.memberCount} ] (id: ${guild.id})`);
-    bot.channels.filter(c => c.name === "機器人log").forEach(c => c.send(`退出群組 ${guild.name} [ ${guild.memberCount} ] (id: ${guild.id})`));
   });
   
   bot.on("ready", () => {
     console.log(`${bot.user.username}成功啟動了!^w^ [ ${bot.guilds.size} | ${bot.channels.size} | ${bot.users.size} ]`);
-    const ready = new Discord.RichEmbed()
-     .setTitle(`${bot.user.username}成功啟動了!^w^ [ ${bot.guilds.size} | ${bot.channels.size} | ${bot.users.size} ]`)
-     .setColor(0x9843F9)
-    bot.channels.filter(c => c.name === "機器人log").forEach(c => c.send(ready));
     bot.user.setActivity(`我正在 ${bot.guilds.size} 個群組潛水`,'https://www.twitch.tv/weikuouo');
   });
   
