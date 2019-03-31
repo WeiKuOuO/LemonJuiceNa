@@ -20,3 +20,7 @@ module.exports.run = (bot, message, args) => {
         embed: embed
     });
 }; 
+
+module.exports.help = {
+    name: 'role',
+};

@@ -51,8 +51,8 @@ bot.commands = new Discord.Collection();
       }
     })
     
-    bot.on("message", async message => {
 
+    bot.on("message", async message => {
       //command handler
       if (message.author.bot || message.channel.type === 'dm') return;
       if (message.content.toLowerCase().indexOf(prefix) !== 0) return
@@ -64,25 +64,27 @@ bot.commands = new Discord.Collection();
       }catch(err){
         message.reply(`未知指令! 請輸入 **${prefix}help** 查看指令列表`)
       }
-      if(message.author.bot) return;
       if(message.content.indexOf(prefix) !== 0) return;
     
     })
 
-    fs.readdir("./commands/", (err,files) => {
-      if(err) console.log(err);
-      let jsfile = files.filter(f => f.split(".").pop() === "js")
-      if(jsfile.length <= 0){
-        console.log("找不到任何指令");
-        return;
-      }
-    
-      jsfile.forEach((f, i) => {
-        let props = require(`./commands/${f}`);
-        console.log(`${f} 載入成功!`)
-        bot.commands.set(props.help.name, props);
+    bot.on("ready", async () => {
+      fs.readdir("./commands/", (err,files) => {
+        if(err) console.log(err);
+        let jsfile = files.filter(f => f.split(".").pop() === "js")
+        if(jsfile.length <= 0){
+          console.log("找不到任何指令");
+          return;
+        }
+      
+        jsfile.forEach((f, i) => {
+          let props = require(`./commands/${f}`);
+          console.log(`${f} 載入成功!`)
+          bot.commands.set(props.help.name, props);
+        })
       })
     })
+    
   
   
 
