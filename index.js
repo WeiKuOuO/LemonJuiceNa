@@ -1,5 +1,8 @@
 const Discord = require('discord.js');
+const moment = require("moment")
 const fs = require("fs");
+
+require("moment-duration-format")
 
 const token = process.env.token
 const prefix = process.env.prefix
