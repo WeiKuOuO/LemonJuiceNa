@@ -16,9 +16,7 @@ module.exports.run = (bot, message, args) => {
         .addField('顏色(16進位)', role.hexColor, true)
         .addField('創建日期', role.createdAt.toDateString(), true)
         .addField('ID', role.id, true);
-    return message.channel.send({
-        embed: embed
-    });
+    message.channel.send(embed);
 }; 
 
 module.exports.help = {
