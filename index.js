@@ -135,7 +135,7 @@ const bot = new Discord.Client();
   bot.on("ready", () => {
     const time = new Date()
     console.log(`${bot.user.username}成功啟動了!^w^, [ ${bot.guilds.size} | ${bot.channels.size} | ${bot.users.size} | ${time} ]`);
-    bot.channels.filter(c => c.name === "機器人log").forEach(c => c.send(`${bot.user.username}成功啟動了!^w^, [ ${bot.guilds.size} | ${bot.channels.size} | ${bot.users.size} | ${time}]`));
+    bot.channels.filter(c => c.name === "機器人log").forEach(c => c.send(`${bot.user.username}成功啟動了!^w^, [ ${bot.guilds.size} | ${bot.channels.size} | ${bot.users.size} | ${time} ]`));
     bot.user.setActivity(`我正在 ${bot.guilds.size} 個群組潛水`,'https://www.twitch.tv/weikuouo');
   });
   
