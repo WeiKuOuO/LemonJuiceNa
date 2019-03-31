@@ -47,24 +47,10 @@ bot.commands = new Discord.Collection();
         bot.channels.filter(c => c.name === "驗證log頻道").forEach(c => c.send(other));
         message.member.sendMessage("test")
         message.delete()
+        }
       }
-    }
-
-    fs.readdir("./commands/", (err,files) => {
-      if(err) console.log(err);
-      let jsfile = files.filter(f => f.split(".").pop() === "js")
-      if(jsfile.length <= 0){
-        console.log("找不到任何指令");
-        return;
-      }
-    
-      jsfile.forEach((f, i) => {
-        let props = require(`./commands/${f}`);
-        console.log(`${f} 載入成功!`)
-        bot.commands.set(props.help.name, props);
-      })
     })
-
+    
     bot.on("message", async message => {
 
       //command handler
@@ -82,45 +68,22 @@ bot.commands = new Discord.Collection();
       if(message.content.indexOf(prefix) !== 0) return;
     
     })
-    // bot.on('guildMemberAdd', member => {
-    //   let logChannel = member.guild.channels.find('name', '🏡加入頻道🏡');
-      
-    //     let logEmbed = new Discord.RichEmbed()
-    //     .setAuthor("成員加入 | Logs") 
-    //     .setDescription(member.user.username + " **加入**了伺服器 (" + member.user.id + ")")
-    //     .setColor(0x18FF00)
-    //     .setFooter("成員頭像", member.user.displayAvatarURL)
-    //     .setTimestamp()
-    //     logChannel.send(logEmbed);
-    //     break;
-    //   })
 
-
-    //   bot.on('guildMemberRemove', member => {
-    //   let logChannel = member.guild.channels.find('name', '🏡加入頻道🏡');
-      
-    //     let logEmbed = new Discord.RichEmbed()
-    //     .setAuthor("成員離開 | Logs") 
-    //     .setDescription(member.user.username + " **離開**了伺服器 (" + member.user.id + ")")
-    //     .setFooter("成員頭像", member.user.displayAvatarURL)
-    //     .setColor(0xFF0000)
-    //     .setTimestamp()
-    //     logChannel.send(logEmbed);
-    //     break;
-    //   })
-
-    // if(message.content === "wtfisthewrongjoin"){
-    //    message.delete().catch(O_o=>{});
-    //    const joinmessage = new Discord.RichEmbed()
-    //   .setAuthor(bot.user.username)
-    //   .setTitle("加入須知")
-    //   .setColor(0x00FF04)
-    //   .addField("如何加入?","\`\`\`fix\n歡迎來到地城之內DC群，請打'dungeon'來證明你不是機器人\`\`\`", true)
-    // bot.channels.filter(c => c.name=="歡迎來到地城之內").forEach(c => c.bulkDelete("50"))
-    // bot.channels.filter(c => c.name === "歡迎來到地城之內").forEach(c => c.send(joinmessage));
-    // }
-
-  })
+    fs.readdir("./commands/", (err,files) => {
+      if(err) console.log(err);
+      let jsfile = files.filter(f => f.split(".").pop() === "js")
+      if(jsfile.length <= 0){
+        console.log("找不到任何指令");
+        return;
+      }
+    
+      jsfile.forEach((f, i) => {
+        let props = require(`./commands/${f}`);
+        console.log(`${f} 載入成功!`)
+        bot.commands.set(props.help.name, props);
+      })
+    })
+  
   
 
   bot.on("guildCreate", guild => {
