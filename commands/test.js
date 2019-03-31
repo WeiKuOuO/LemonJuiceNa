@@ -3,8 +3,8 @@ const moment = require("moment")
 require("moment-duration-format")
 
 exports.run = async (bot, message, args) => {
-    const embed = new Discord.MessageEmbed()
-            .setColor('#36393e')
+    const embed = new Discord.RichEmbed()
+            .setColor("RAMDOM")
             .setThumbnail(message.guild.member.displayAvatarURL())
             .setAuthor(`${message.guild.member.username}#${message.guild.member.discriminator}`, user.displayAvatarURL())
             .addField("ID:", `${message.guild.member.id}`, true)
