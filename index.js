@@ -133,9 +133,10 @@ const bot = new Discord.Client();
   });
   
   bot.on("ready", () => {
-    console.log(`${bot.user.username}成功啟動了!^w^, [ ${bot.guilds.size} | ${bot.channels.size} | ${bot.users.size} ]`);
+    console.log(`${bot.user.username}成功啟動了!^w^ [ ${bot.guilds.size} | ${bot.channels.size} | ${bot.users.size} ]`);
     const ready = new Discord.RichEmbed()
-     .setTitle(`${bot.user.username}成功啟動了!^w^, [ ${bot.guilds.size} | ${bot.channels.size} | ${bot.users.size} ]`)
+     .setTitle(`${bot.user.username}成功啟動了!^w^ [ ${bot.guilds.size} | ${bot.channels.size} | ${bot.users.size} ]`)
+     .setColor(0x9843F9)
     bot.channels.filter(c => c.name === "機器人log").forEach(c => c.send(ready));
     bot.user.setActivity(`我正在 ${bot.guilds.size} 個群組潛水`,'https://www.twitch.tv/weikuouo');
   });
