@@ -5,7 +5,6 @@ const token = process.env.token
 const prefix = process.env.prefix
 
 const bot = new Discord.Client();
-bot.commands = new Discord.Collection();
 
   bot.on('message', async message => {
     if (message.author.bot) return
@@ -77,10 +76,8 @@ bot.commands = new Discord.Collection();
           return;
         }
       
-        jsfile.forEach((f, i) => {
-          let props = require(`./commands/${f}`);
+        jsfile.forEach((f, i) => {;
           console.log(`${f} 載入成功!`)
-          bot.commands.set(props.help.name, props);
         })
       })
     })
