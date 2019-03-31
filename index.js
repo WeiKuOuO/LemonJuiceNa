@@ -9,7 +9,7 @@ const prefix = process.env.prefix
 
 const bot = new Discord.Client();
 
-  bot.on('message', async message => {
+bot.on('message', async message => {
     if (message.author.bot) return
     if (message.channel.id == "557950194948505601") {
       if (message.content === "dungeon") {
