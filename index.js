@@ -5,6 +5,7 @@ const token = process.env.token
 const prefix = process.env.prefix
 
 const bot = new Discord.Client();
+bot.commands = new Discord.Collection();
 
   bot.on('message', async message => {
     if (message.author.bot) return
